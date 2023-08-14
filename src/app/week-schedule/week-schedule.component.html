@@ -1,0 +1,21 @@
+<div class="week-schedule">
+    <div class="cell empty-cell"></div> <!-- Top-left corner cell -->
+  
+    <!-- Weekdays -->
+    <div class="cell weekday" *ngFor="let day of days">{{ day }}</div>
+  
+    <!-- Time slots and events -->
+    <ng-container *ngFor="let timeSlot of timeSlots">
+      <!-- Time slot -->
+      <div class="cell time-slot">{{ timeSlot }}</div>
+  
+      <!-- Events -->
+      <div
+        class="cell event"
+        *ngFor="let day of days"
+      >
+        <!-- Add event content here -->
+      </div>
+    </ng-container>
+  </div>
+  

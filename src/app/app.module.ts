@@ -3,14 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SearchComponent } from './search/search.component';
+import { AboutComponent } from './about/about.component';
+import { WeekScheduleComponent } from './week-schedule/week-schedule.component';
+import { BookmarkComponent } from './bookmark/bookmark.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    DashboardComponent,
+    SearchComponent,
+    AboutComponent,
+    WeekScheduleComponent,
+    BookmarkComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

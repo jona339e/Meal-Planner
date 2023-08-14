@@ -1,0 +1,5 @@
+/* makes my content displayed below navbar*/
+
+router-outlet {
+    margin-top: 10vh; /* Adjust the value as needed to create space */
+  }

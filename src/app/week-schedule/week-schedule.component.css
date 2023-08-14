@@ -1,0 +1,35 @@
+.week-schedule {
+  margin: 10px 50px auto;
+  display: grid;
+  grid-template-columns: auto repeat(7, 1fr);
+  grid-template-rows: 50px minmax(125px, 1fr) minmax(125px, 1fr) minmax(125px, 1fr);
+  grid-gap: 10px;
+}
+
+.cell {
+  padding: 5px;
+  text-align: center;
+}
+
+.empty-cell {
+  border: none;
+}
+
+.weekday {
+  font-weight: bold;
+  border: none;
+  align-self: center; /* Align text vertically in the center */
+}
+
+.time-slot {
+  font-weight: bold;
+  border: none;
+  align-self: center; /* Align text vertically in the center */
+}
+
+.event {
+  background-color: var(--color-secondary);
+  color: white;
+  cursor: pointer;
+  height: 100%; /* Expand event to fill its cell's height */
+}
