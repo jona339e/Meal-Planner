@@ -9,6 +9,7 @@ import { SearchComponent } from './search/search.component';
 import { AboutComponent } from './about/about.component';
 import { WeekScheduleComponent } from './week-schedule/week-schedule.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
+import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { BookmarkComponent } from './bookmark/bookmark.component';
     SearchComponent,
     AboutComponent,
     WeekScheduleComponent,
-    BookmarkComponent
+    BookmarkComponent,
+    RecipeCardComponent
   ],
   imports: [
     BrowserModule,

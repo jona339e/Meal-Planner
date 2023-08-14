@@ -1,6 +1,8 @@
 <div class="bookmark-container" [class.expanded]="isExpanded">
-  <div class="expanded-content" *ngIf="isExpanded">
-    <!-- Content of the expanded state goes here -->
+  
+  <div class="expanded-content" [style.display]="isExpanded ? 'block' : 'none'">
+    <app-recipe-card></app-recipe-card>
+
   </div>
 </div>
 <div class="arrow" (click)="toggleExpansion()" [ngStyle]="{ bottom: isExpanded ? 'calc(30vh)' : '0' }">
