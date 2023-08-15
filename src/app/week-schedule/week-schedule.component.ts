@@ -11,20 +11,21 @@ export class WeekScheduleComponent {
   days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   timeSlots = ['Breakfast', 'Lunch', 'Dinner'];
   recipes: Recipe[] = [];
+  cellContents: Recipe[][] = Array.from({ length: this.timeSlots.length }, () =>
+    Array(this.days.length).fill(null)
+  );
 
-  Drop(event: CdkDragDrop<Recipe[]>) {
-    copyArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex
-    )
-    console.log('drop', event);
-
-
+  Drop(event: CdkDragDrop<Recipe[]>, rowIndex: number, colIndex: number) {
+    if (event.previousContainer === event.container) {
+      console.log('same container');
+      return;
     }
 
-    getRatingStars(rating: number): number[] {
-      return new Array(rating);
-    }
+    const recipe = event.item.data;
+    this.cellContents[colIndex][rowIndex] = recipe;
+  }
+
+  getRatingStars(rating: number): number[] {
+    return new Array(rating);
+  }
 }

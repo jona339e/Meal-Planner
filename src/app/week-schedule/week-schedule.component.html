@@ -1,36 +1,37 @@
 <div class="week-schedule">
-    <div class="cell empty-cell"></div> <!-- Top-left corner cell -->
-  
-    <!-- Weekdays -->
-    <div class="cell weekday" *ngFor="let day of days">{{ day }}</div>
-  
-    <!-- Time slots and events -->
-    <ng-container *ngFor="let timeSlot of timeSlots">
-      <!-- Time slot -->
-      <div class="cell time-slot">{{ timeSlot }}</div>
-  
-      <!-- Events -->
-      <div
-        cdkDropList
-        class="cell event drop-area"
-        *ngFor="let day of days"
-        [cdkDropListData]="recipes"
-        (cdkDropListDropped)="Drop($event)"
-      >
-      <div *ngFor="let recipe of recipes"></div>
+  <div class="cell empty-cell"></div> <!-- Top-left corner cell -->
 
-      <div class="recipe-card" *ngFor="let recipe of recipes" cdkDrag>
-        <h3>{{ recipe.title }}</h3>
-        <div class="rating">
-          <i class="fas fa-star" *ngFor="let _ of getRatingStars(recipe.rating)"></i>
-        </div>
+  <!-- Weekdays -->
+  <div class="cell weekday" *ngFor="let day of days">{{ day }}</div>
+
+  <!-- Time slots and events -->
+  <ng-container *ngFor="let timeSlot of timeSlots; let colIndex = index">
+    <!-- Time slot -->
+    <div class="cell time-slot">{{ timeSlot }}</div>
+
+    <!-- Events -->
+<!-- ... Previous HTML ... -->
+
+<div
+  cdkDropList
+  class="cell event drop-area"
+  *ngFor="let day of days; let rowIndex = index"
+  [cdkDropListData]="cellContents[colIndex]"
+  (cdkDropListDropped)="Drop($event, rowIndex, colIndex)"
+>
+  <div *ngIf="cellContents[colIndex][rowIndex]; else emptyCell">
+    <div class="recipe-card" cdkDrag>
+      <h3>{{ cellContents[colIndex][rowIndex]?.title }}</h3>
+      <div class="rating">
+        <i
+          class="fas fa-star"
+          *ngFor="let _ of getRatingStars(cellContents[colIndex][rowIndex]?.rating || 0)"
+        ></i>
       </div>
-
-
-
-      <div cdkDropList [cdkDropListData]="recipes" class="recipe-list" (cdkDropListDropped)="Drop($event)"></div>
-        <!-- Add event content here -->
-      </div>
-    </ng-container>
+    </div>
   </div>
-  
+  <ng-template #emptyCell>
+    <!-- Empty cell content -->
+  </ng-template>
+</div>
+
