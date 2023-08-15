@@ -40,5 +40,7 @@
 }
 
 .drop-area{
-  border: dotted red 2px;
+  max-height: 120px;
+  overflow: hidden;
 }
+

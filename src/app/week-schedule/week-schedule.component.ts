@@ -15,16 +15,14 @@ export class WeekScheduleComponent {
     Array(this.days.length).fill(null)
   );
 
-  Drop(event: CdkDragDrop<Recipe[]>, rowIndex: number, colIndex: number) {
+  Drop(event: CdkDragDrop<Recipe[]>, rowIndex: number, colIndex: number): void {
     if (event.previousContainer === event.container) {
-      console.log('same container');
       return;
     }
-
+  
     const recipe = event.item.data;
     this.cellContents[colIndex][rowIndex] = recipe;
   }
-
   getRatingStars(rating: number): number[] {
     return new Array(rating);
   }
