@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import BrowserAnimationsModule
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,7 +33,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     BrowserModule,
     AppRoutingModule,
     DragDropModule,
-    CdkDropListGroup, CdkDropList, CdkDrag
+    CdkDropListGroup, CdkDropList, CdkDrag,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
