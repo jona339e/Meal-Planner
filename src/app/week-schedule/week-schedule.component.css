@@ -29,8 +29,6 @@
 
 .event {
   background-color: var(--color-secondary);
-  color: white;
-  cursor: pointer;
   height: 100%; /* Expand event to fill its cell's height */
 }
 
@@ -47,4 +45,8 @@
 .shopping-list{
   max-height: 120px;
   overflow: hidden;
+}
+
+.fa-star{
+  color: gold;
 }

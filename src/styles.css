@@ -29,3 +29,20 @@ body{
     padding: 10px 20px;
     cursor: pointer;
   }
+
+
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 26px;
+  }
+
+  p {
+    font-size: 22px;
+  }
+
+  li{
+    font-size: 22px;
+  }

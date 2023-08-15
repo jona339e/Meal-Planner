@@ -1,18 +1,15 @@
 .shopping-list {
-    border: 1px solid #ccc;
     padding: 10px;
     margin-top: 20px;
     border-radius: 5px;
-    background-color: #f5f5f5;
+    background-color: var(--color-primary);
   }
   
   .shopping-list h2 {
-    font-size: 24px;
     margin-bottom: 10px;
   }
   
   .shopping-list p {
-    font-size: 16px;
     margin-bottom: 10px;
   }
   
@@ -22,7 +19,6 @@
   }
   
   .shopping-list li {
-    font-size: 18px;
     margin-bottom: 5px;
   }
   
