@@ -1,4 +1,4 @@
-<div class="bookmark-container" [class.expanded]="isExpanded">
+<div class="bookmark-container" [class.expanded]="isExpanded" *ngIf="!isHidden">
   
   <div class="expanded-content" [style.display]="isExpanded ? 'block' : 'none'">
     <app-recipe-card></app-recipe-card>

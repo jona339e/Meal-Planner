@@ -11,9 +11,24 @@
   
       <!-- Events -->
       <div
-        class="cell event"
+        cdkDropList
+        class="cell event drop-area"
         *ngFor="let day of days"
+        [cdkDropListData]="recipes"
+        (cdkDropListDropped)="Drop($event)"
       >
+      <div *ngFor="let recipe of recipes"></div>
+
+      <div class="recipe-card" *ngFor="let recipe of recipes" cdkDrag>
+        <h3>{{ recipe.title }}</h3>
+        <div class="rating">
+          <i class="fas fa-star" *ngFor="let _ of getRatingStars(recipe.rating)"></i>
+        </div>
+      </div>
+
+
+
+      <div cdkDropList [cdkDropListData]="recipes" class="recipe-list" (cdkDropListDropped)="Drop($event)"></div>
         <!-- Add event content here -->
       </div>
     </ng-container>

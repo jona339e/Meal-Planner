@@ -33,3 +33,12 @@
   cursor: pointer;
   height: 100%; /* Expand event to fill its cell's height */
 }
+
+.drop-zone {
+  border: 2px dashed #ccc;
+  min-height: 60px; /* Adjust as needed */
+}
+
+.drop-area{
+  border: dotted red 2px;
+}

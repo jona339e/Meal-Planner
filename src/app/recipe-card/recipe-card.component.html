@@ -1,5 +1,9 @@
-<div class="recipe-card-container">
-  <div class="recipe-card" *ngFor="let recipe of recipes">
+<div 
+class="recipe-card-container" 
+cdkDropList 
+[cdkDropListData]="recipes" 
+*ngIf="recipes">
+  <div class="recipe-card" *ngFor="let recipe of recipes" cdkDrag>
     <h3>{{ recipe.title }}</h3>
     <div class="rating">
       <i class="fas fa-star" *ngFor="let _ of getRatingStars(recipe.rating)"></i>

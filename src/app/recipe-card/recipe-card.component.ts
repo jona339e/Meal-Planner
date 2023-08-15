@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CdkDrag } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-recipe-card',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./recipe-card.component.css']
 })
 export class RecipeCardComponent {
+
   recipes: Recipe[] = [
     { title: 'Delicious Pasta', rating: 4 },
     { title: 'Tasty Salad', rating: 5 }
@@ -17,7 +19,7 @@ export class RecipeCardComponent {
   }
 }
 
-interface Recipe {
+export interface Recipe {
   title: string;
   rating: number;
 }

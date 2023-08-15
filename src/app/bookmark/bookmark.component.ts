@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./bookmark.component.css'],
 })
 export class BookmarkComponent {
+  isHidden = false; // Add this property
   isExpanded = false;
   toggleExpansion() {
     this.isExpanded = !this.isExpanded;
