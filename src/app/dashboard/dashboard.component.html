@@ -1,6 +1,6 @@
 <div cdkDropListGroup>
     <app-week-schedule (shoppingListUpdated)="onShoppingListUpdated($event)"></app-week-schedule>
     <app-shopping-list [ingredients]="shoppingListIngredients"></app-shopping-list>
-    <app-bookmark></app-bookmark>
+    <app-bookmark (bookmarkClicked)="toggleShoppingList()"></app-bookmark>
 </div>
 

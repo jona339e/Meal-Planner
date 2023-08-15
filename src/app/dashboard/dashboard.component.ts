@@ -24,4 +24,12 @@ export class DashboardComponent {
       }
     });
   }
+  showShoppingList: boolean = true;
+
+  toggleShoppingList() {
+    this.showShoppingList = !this.showShoppingList;
+  }
+
+
+
 }
