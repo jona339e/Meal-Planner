@@ -11,6 +11,7 @@ import { WeekScheduleComponent } from './week-schedule/week-schedule.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { CdkDrag, CdkDropList, CdkDropListGroup, DragDrop, DragDropModule } from '@angular/cdk/drag-drop';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { CdkDrag, CdkDropList, CdkDropListGroup, DragDrop, DragDropModule } from
     WeekScheduleComponent,
     BookmarkComponent,
     RecipeCardComponent,
+    ShoppingListComponent,
     
   ],
   imports: [

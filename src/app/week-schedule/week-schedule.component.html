@@ -21,7 +21,7 @@
 >
   <div *ngIf="cellContents[colIndex][rowIndex]; else emptyCell">
     <div class="recipe-card" cdkDrag>
-      <h3>{{ cellContents[colIndex][rowIndex]?.title }}</h3>
+      <h3>{{ cellContents[colIndex][rowIndex].title }}</h3>
       <div class="rating">
         <i
           class="fas fa-star"
@@ -35,4 +35,7 @@
     <!-- Empty cell content -->
   </ng-template>
 </div>
+
+
+
 

@@ -44,3 +44,7 @@
   overflow: hidden;
 }
 
+.shopping-list{
+  max-height: 120px;
+  overflow: hidden;
+}
