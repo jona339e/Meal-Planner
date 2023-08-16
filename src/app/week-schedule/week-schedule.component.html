@@ -10,32 +10,28 @@
     <div class="cell time-slot">{{ timeSlot }}</div>
 
     <!-- Events -->
-<!-- ... Previous HTML ... -->
-
-<div
-  cdkDropList
-  class="cell event drop-area"
-  *ngFor="let day of days; let rowIndex = index"
-  [cdkDropListData]="cellContents[colIndex]"
-  (cdkDropListDropped)="Drop($event, rowIndex, colIndex)"
->
-  <div *ngIf="cellContents[colIndex][rowIndex]; else emptyCell">
-    <div class="recipe-card" cdkDrag>
-      <h3>{{ cellContents[colIndex][rowIndex].title }}</h3>
-      <div class="rating">
-        <i
-          class="fas fa-star"
-          *ngFor="let _ of getRatingStars(cellContents[colIndex][rowIndex]?.rating || 0)"
-        ></i>
+    <div
+      cdkDropList
+      class="cell event drop-area"
+      *ngFor="let day of days; let rowIndex = index"
+      [cdkDropListData]="cellContents[colIndex]"
+      (cdkDropListDropped)="Drop($event, rowIndex, colIndex)"
+    >
+    <div *ngIf="cellContents[colIndex][rowIndex] && !cellContents[colIndex][rowIndex]?.deleted; else emptyCell">
+      <div class="recipe-card" cdkDrag>
+        <h3>{{ cellContents[colIndex][rowIndex]?.title }}</h3>
+        <div class="rating">
+          <i
+            class="fas fa-star"
+            *ngFor="let _ of getRatingStars(cellContents[colIndex][rowIndex]?.rating || 0)"
+          ></i>
+        </div>
+        <button class="delete-button" (click)="deleteRecipe(rowIndex, colIndex)" [class.hidden]="cellContents[colIndex][rowIndex]?.deleted">Remove</button>
       </div>
     </div>
-  </div>
-  
+    </div>
+  </ng-container>
   <ng-template #emptyCell>
     <!-- Empty cell content -->
   </ng-template>
 </div>
-
-
-
-

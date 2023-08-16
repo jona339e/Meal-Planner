@@ -29,11 +29,22 @@ export class DashboardComponent {
         // Ingredient already exists, update the amount
         this.shoppingListIngredients[existingIngredientIndex].amountValue += newIngredient.amountValue;
       } else {
-        // Ingredient doesn't exist, add it to the list
-        this.shoppingListIngredients.push(newIngredient);
+        // Create a new instance of the ingredient and add it to the list
+        const shoppingListIngredient: Ingredient = {
+          name: newIngredient.name,
+          amount: newIngredient.amount,
+          amountValue: newIngredient.amountValue,
+        };
+        this.shoppingListIngredients.push(shoppingListIngredient);
       }
     });
+  
+    // Remove ingredients with 0 amount
+    this.shoppingListIngredients = this.shoppingListIngredients.filter(ingredient => ingredient.amountValue > 0);
   }
+  
+  
+  
   
   toggleShoppingList() {
     this.showShoppingList = !this.showShoppingList;

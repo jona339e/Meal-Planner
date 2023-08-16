@@ -16,6 +16,7 @@
   width: fit-content; /* Fit the width to content */
   max-width: 100%; /* Set a maximum width of 100% */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  cursor: grab;
 }
 
 .recipe-card h3 {
@@ -29,4 +30,8 @@
 .rating i {
   color: gold; /* Set the color for the star icons */
   margin-right: 2px; /* Add some spacing between stars */
+}
+
+.cdk-drag-preview {
+  cursor: grabbing;
 }

@@ -1,0 +1,42 @@
+.recipe-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 80vh; /* Change height to min-height */
+}
+
+.recipe-card {
+  padding: 16px;
+  min-width: 80vw;
+  min-height: 80vh;
+  margin-top: 2.5%; /* Add margin at the top */
+  background-color: var(--color-secondary);
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.recipe-card h2 {
+  margin-bottom: 8px;
+}
+
+.rating {
+  margin-bottom: 12px;
+}
+
+.rating i {
+  color: gold;
+}
+
+.ingredients-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ingredients-list li {
+  margin-bottom: 4px;
+}
+
+.empty-message {
+  text-align: center;
+}

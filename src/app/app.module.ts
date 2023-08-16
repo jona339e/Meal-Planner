@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import BrowserAnimationsModule
-
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { BookmarkComponent } from './bookmark/bookmark.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { CdkDrag, CdkDropList, CdkDropListGroup, DragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { CustomFilterPipe } from './custom-filter-pipe.pipe';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 
 
 @NgModule({
@@ -27,6 +29,9 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     BookmarkComponent,
     RecipeCardComponent,
     ShoppingListComponent,
+    CustomFilterPipe,
+    RecipeDetailComponent,
+    
     
   ],
   imports: [
@@ -34,7 +39,9 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     AppRoutingModule,
     DragDropModule,
     CdkDropListGroup, CdkDropList, CdkDrag,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

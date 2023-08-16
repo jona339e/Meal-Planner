@@ -1,0 +1,18 @@
+<div class="recipe-detail-container">
+    <div *ngIf="recipe" class="recipe-card">
+      <h2>{{ recipe.title }}</h2>
+      <div class="rating">
+        <i class="fas fa-star" *ngFor="let _ of getRatingStars(recipe.rating)"></i>
+      </div>
+      <div class="ingredients-list">
+        <h3>Ingredients:</h3>
+        <ul>
+          <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.amount }}</li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="!recipe" class="empty-message">
+      <p>No recipe found.</p>
+    </div>
+  </div>
+  

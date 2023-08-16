@@ -27,7 +27,6 @@ body{
     background-color: var(--color-secondary);
     border: none;
     padding: 10px 20px;
-    cursor: pointer;
   }
 
 
@@ -45,4 +44,8 @@ body{
 
   li{
     font-size: 22px;
+  }
+
+  .cdk-drag-preview {
+    cursor: grabbing;
   }

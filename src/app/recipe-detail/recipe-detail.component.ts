@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { Recipe } from '../recipe-card/recipe-card.component';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css'],
+  selector: 'app-recipe-detail',
+  templateUrl: './recipe-detail.component.html',
+  styleUrls: ['./recipe-detail.component.css']
 })
-export class SearchComponent implements OnInit {
+export class RecipeDetailComponent implements OnInit {
+  recipe: Recipe | null = null;
+
   recipes: Recipe[] = [
     {
       title: 'Delicious Pasta',
@@ -154,36 +154,20 @@ export class SearchComponent implements OnInit {
 
 ];
 
-  searchTerm: string = '';
-  filteredRecipes: Recipe[] = [];
+  constructor(private route: ActivatedRoute) {}
 
-  private searchInputSubject = new Subject<string>();
-
-  constructor(private router: Router) {}
-
-  goToRecipeDetail(recipe: Recipe) {
-    // Navigate to RecipeDetailComponent with the recipe's title as parameter
-    this.router.navigate(['/recipe-detail', recipe.title]);
+  ngOnInit(): void {
+    const title = this.route.snapshot.paramMap.get('title');
+    // Assuming recipes is an array containing all recipes
+    this.recipe = this.recipes.find(recipe => recipe.title === title) || null;
   }
 
-  ngOnInit() {
-    // Subscribe to the searchInputSubject
-    this.filteredRecipes = [...this.recipes];
-    this.searchInputSubject
-      .pipe(debounceTime(200), distinctUntilChanged())
-      .subscribe(searchTerm => {
-        this.filterRecipes(searchTerm);
-      });
-  }
 
-  filterRecipes(searchTerm: string) {
-    this.filteredRecipes = this.recipes.filter(recipe =>
-      recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  getRatingStars(rating: number): number[] {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+  
+    return new Array(fullStars + halfStar);
   }
-
-  onSearchInputChanged(event: Event) {
-    this.searchInputSubject.next(this.searchTerm);
-  }
-
+  
 }
