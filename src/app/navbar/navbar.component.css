@@ -1,6 +1,7 @@
 .navbar {
     background-color: var(--color-secondary); /* Use the secondary color for the background */
-    position: sticky;
+    position: fixed;
+    top: 0;
     width: 100%;
     padding: 10px 0; /* Increase padding to make the navbar taller */
     line-height: 2; /* Adjust line height for vertical centering */

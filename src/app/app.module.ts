@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import BrowserAnimationsModule
 import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +42,7 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
     CdkDropListGroup, CdkDropList, CdkDrag,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     
   ],
   providers: [],

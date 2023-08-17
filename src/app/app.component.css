@@ -3,3 +3,6 @@
 router-outlet {
     margin-top: 10vh; /* Adjust the value as needed to create space */
   }
+  .main{
+    margin-top: 7vh;
+  }

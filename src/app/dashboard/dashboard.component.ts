@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { Ingredient } from '../recipe-card/recipe-card.component';
-
+import { Ingredient } from '../Interfaces';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -26,22 +25,23 @@ export class DashboardComponent {
       );
   
       if (existingIngredientIndex !== -1) {
-        // Ingredient already exists, update the amount
-        this.shoppingListIngredients[existingIngredientIndex].amountValue += newIngredient.amountValue;
+        // Subtract the ingredient amount from shopping list
+        this.shoppingListIngredients[existingIngredientIndex].amount.value += newIngredient.amount.value;
       } else {
         // Create a new instance of the ingredient and add it to the list
         const shoppingListIngredient: Ingredient = {
           name: newIngredient.name,
-          amount: newIngredient.amount,
-          amountValue: newIngredient.amountValue,
+          amount: { ...newIngredient.amount, value: newIngredient.amount.value },
         };
         this.shoppingListIngredients.push(shoppingListIngredient);
       }
     });
   
     // Remove ingredients with 0 amount
-    this.shoppingListIngredients = this.shoppingListIngredients.filter(ingredient => ingredient.amountValue > 0);
+    this.shoppingListIngredients = this.shoppingListIngredients.filter(ingredient => ingredient.amount.value > 0);
   }
+  
+  
   
   
   

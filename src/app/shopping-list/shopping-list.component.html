@@ -5,7 +5,7 @@
     <p>Here's what you need to buy:</p>
     <ul>
       <li *ngFor="let ingredient of ingredients">
-        {{ ingredient.amountValue }} {{ ingredient.amount }} - {{ ingredient.name }}
+        {{ ingredient.amount.value }} {{ ingredient.amount.unit }} - {{ ingredient.name }}
       </li>
     </ul>
   </div>

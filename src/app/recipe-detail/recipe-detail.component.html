@@ -4,10 +4,21 @@
       <div class="rating">
         <i class="fas fa-star" *ngFor="let _ of getRatingStars(recipe.rating)"></i>
       </div>
-      <div class="ingredients-list">
+      <div class="description">
+        <p>{{ recipe.description }}</p>
+      </div>
+      <div class="list">
         <h3>Ingredients:</h3>
         <ul>
-          <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.amount }}</li>
+          <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.name}} {{ingredient.amount.value}} {{ingredient.amount.unit}}</li>
+        </ul>
+      </div>
+      <div class="list">
+        <h3>Instructions</h3>
+        <h6 class="time">Cooking Time: {{recipe.cookingTime}} - Preparation time: {{recipe.preparationTime}}</h6>
+        <h6 class="servings">Servings: {{recipe.servings}}</h6>
+        <ul>
+          <li *ngFor="let instruction of recipe.instructions">{{ instruction }}</li>
         </ul>
       </div>
     </div>

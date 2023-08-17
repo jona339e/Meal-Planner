@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Recipe, Ingredient } from '../recipe-card/recipe-card.component';
-
+import { Recipe, Ingredient } from '../Interfaces';
 @Component({
   selector: 'app-week-schedule',
   templateUrl: './week-schedule.component.html',
@@ -13,7 +12,7 @@ export class WeekScheduleComponent {
 
   days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   timeSlots = ['Breakfast', 'Lunch', 'Dinner'];
-  recipes: Recipe[] = [];
+  
   cellContents: Recipe[][] = Array.from({ length: this.timeSlots.length }, () =>
     Array(this.days.length).fill(null)
   );
@@ -43,16 +42,14 @@ export class WeekScheduleComponent {
   deleteRecipe(rowIndex: number, colIndex: number): void {
     const deletedRecipe = this.cellContents[colIndex][rowIndex];
     if (deletedRecipe) {
-      this.shoppingListIngredients = this.shoppingListIngredients.filter(ingredient =>
-        !deletedRecipe.ingredients.find(ing => ing.name === ingredient.name)
-      );
+      deletedRecipe.ingredients.forEach(ingredient => {
+        this.shoppingListUpdated.emit([{ ...ingredient, amount: { ...ingredient.amount, value: -ingredient.amount.value } }]);
+      });
       deletedRecipe.deleted = true; // Set deleted property to true
-      this.shoppingListUpdated.emit(deletedRecipe.ingredients.map(ing => ({
-        ...ing,
-        amountValue: -ing.amountValue  // Negate the amountValue for subtraction
-      })));
     }
   }
+  
+  
   
 
   

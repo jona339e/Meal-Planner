@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Ingredient } from '../recipe-card/recipe-card.component';
-
+import { Ingredient } from '../Interfaces';
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',

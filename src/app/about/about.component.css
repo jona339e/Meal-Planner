@@ -1,6 +1,6 @@
 .about-container {
     max-width: 800px;
-    margin: 20px auto;
+    margin: 10vh auto;
     padding: 20px;
     background-color: var(--color-secondary);
     border-radius: 10px;
