@@ -82,3 +82,7 @@
   opacity: 0;
   pointer-events: none;
 }
+
+.recipe-card-drag-preview {
+  width: 100%; /* Set the width to fill the cell */
+}

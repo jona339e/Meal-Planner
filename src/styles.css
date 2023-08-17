@@ -49,3 +49,8 @@ body{
   .cdk-drag-preview {
     cursor: grabbing;
   }
+
+
+  .recipe-card-drag-preview {
+    width: 100%; /* Set the width to fill the cell */
+  }

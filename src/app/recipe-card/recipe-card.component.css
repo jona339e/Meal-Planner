@@ -6,6 +6,7 @@
   padding-left: 10px;
   overflow-y: auto;
   max-height: 80vh;
+  
 }
 
 .recipe-card-wrapper {
@@ -22,10 +23,11 @@
   padding: 10px;
   border-radius: 5px;
   color: var(--color-text);
-  width: calc(33.33% - 10px);
+  min-width: calc(33.33% - 10px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: grab;
   text-align: center; /* Center the content horizontally */
+  
 }
 
 .recipe-card h3 {
@@ -41,4 +43,8 @@
 .rating i {
   color: gold;
   margin-right: 2px;
+}
+
+.recipe-card-drag-preview {
+  width: 100%; /* Set the width to fill the cell */
 }

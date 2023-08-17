@@ -15,6 +15,8 @@ export class WeekScheduleComponent implements OnInit {
   days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   timeSlots = ['Breakfast', 'Lunch', 'Dinner'];
 
+  isDragging = false;
+
   cellContents: Recipe[][] = Array.from({ length: this.timeSlots.length }, () =>
     Array(this.days.length).fill(null)
   );

@@ -18,7 +18,13 @@
       *ngFor="let day of days; let rowIndex = index"
     >
       <ng-container *ngIf="cellContents[colIndex] && cellContents[colIndex][rowIndex] && !cellContents[colIndex][rowIndex]?.deleted; else emptyCell">
-        <div class="recipe-card" cdkDrag>
+        <div 
+        class="recipe-card" 
+        cdkDrag 
+        [ngClass]="{ 'recipe-card-drag-preview': isDragging }"
+        (cdkDragStarted)="isDragging = true"
+        (cdkDragEnded)="isDragging = false"
+        >
           <h3>{{ cellContents[colIndex][rowIndex]?.title }}</h3>
           <div class="rating">
             <i
