@@ -35,12 +35,14 @@ input[type="text"] {
 .recipes {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+
   gap: 20px;
 }
 
 .recipe-card {
-  width: 30%; /* Set a fixed width */
+  width: 30vw; /* Set a fixed width */
   padding: 16px;
   background-color: var(--color-secondary);
   color: var(--color-text);
