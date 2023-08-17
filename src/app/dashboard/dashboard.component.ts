@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { Ingredient } from '../Interfaces';
+import { Ingredient, Recipe } from '../Interfaces';
+import { WeekScheduleService } from '../week-schedule.service'; // Import the service
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,12 +20,14 @@ export class DashboardComponent {
   shoppingListIngredients: Ingredient[] = [];
   showShoppingList = true;
 
+  constructor(private weekScheduleService: WeekScheduleService) {} // Inject the service
+
   onShoppingListUpdated(ingredients: Ingredient[]) {
     ingredients.forEach(newIngredient => {
       const existingIngredientIndex = this.shoppingListIngredients.findIndex(
         existingIngredient => existingIngredient.name === newIngredient.name
       );
-  
+
       if (existingIngredientIndex !== -1) {
         // Subtract the ingredient amount from shopping list
         this.shoppingListIngredients[existingIngredientIndex].amount.value += newIngredient.amount.value;
@@ -36,20 +40,27 @@ export class DashboardComponent {
         this.shoppingListIngredients.push(shoppingListIngredient);
       }
     });
-  
+
     // Remove ingredients with 0 amount
-    this.shoppingListIngredients = this.shoppingListIngredients.filter(ingredient => ingredient.amount.value > 0);
+    this.shoppingListIngredients = this.shoppingListIngredients.filter(
+      ingredient => ingredient.amount.value > 0
+    );
   }
-  
-  
-  
-  
-  
-  
+
+  deleteRecipe(rowIndex: number, colIndex: number): void {
+    // ... Delete logic ...
+
+    this.saveCellContents();
+  }
+
+  private saveCellContents(): void {
+    // Assuming you have the 'cellContents' variable accessible
+    this.weekScheduleService
+      .updateData(this.saveCellContents)
+      .subscribe(() => console.log('Data saved successfully'));
+  }
+
   toggleShoppingList() {
     this.showShoppingList = !this.showShoppingList;
   }
-
-
-
 }
