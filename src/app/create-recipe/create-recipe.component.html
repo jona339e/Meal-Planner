@@ -47,7 +47,7 @@
             <label>ingredients:</label>
             <div class="ingredient-container">
                 <div class="ingredient-extra" *ngIf="ingredientAmount >= 1">
-                    <div *ngFor="let index of getIngredientCountArray(); let i = index">
+                    <div *ngFor="let index in ingredientAmount; let i = index">
                         <div class="ingredient">
                             <input required type="text" placeholder="Ingredient Name" class="form-control Ingredient">
                             <input required type="number" placeholder="Amount" class="form-control Amount">
@@ -65,7 +65,7 @@
         <div class="form-group">
             <label>Instructions:</label>
             <div class="instructions-container">
-                <div *ngFor="let index of getInstructionCountArray(); let i = index" class="instruction">
+                <div *ngFor="let index in instructionAmount; let i = index" class="instruction">
                     <div class="instruction-extra-extra">
                         <input required type="text" placeholder="Instruction" class="form-control intruction-input">
                     </div>

@@ -21,8 +21,6 @@ export class CreateRecipeComponent implements OnInit {
   onSubmit() {
     const formData: Recipe = this.recipeForm.value;
     console.log(JSON.stringify(formData, null, 2));
-    console.log(this.getInstructionCountArray())
-    console.log(this.getIngredientCountArray())
 }
     
   categories: string[] = ['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Snacks'];
@@ -41,9 +39,6 @@ export class CreateRecipeComponent implements OnInit {
       this.ingredientAmount--;
     }
   }
-  getIngredientCountArray() {
-    return new Array(this.ingredientAmount);
-  }
 
   incrementInstructionAmount() {
     this.instructionAmount++;
@@ -54,9 +49,7 @@ export class CreateRecipeComponent implements OnInit {
       this.instructionAmount--;
     }
   }
-  getInstructionCountArray() {
-    return new Array(this.instructionAmount);
-  }
+
   
 
 
