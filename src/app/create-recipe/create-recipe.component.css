@@ -98,6 +98,7 @@ body {
   cursor: pointer;
   transition: background-color 0.2s;
   margin: 0 5px;
+  min-width: 10%;
 }
 
 .button-container button:hover {

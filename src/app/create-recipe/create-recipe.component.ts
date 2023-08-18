@@ -51,6 +51,8 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   
-
+  counter(length: number): number[] {
+    return new Array(length);
+}
 
 }
