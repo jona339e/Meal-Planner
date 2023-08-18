@@ -4,6 +4,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
+
 /* Style the main container */
 .create-recipe-container {
   background-color: var(--color-primary);
@@ -31,8 +32,8 @@ body {
 .create-recipe-form h3 {
   color: var(--color-text);
   margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 24px;
+  margin-bottom: 2.5%;
+  text-align: center;
 }
 
 /* Style form groups */
