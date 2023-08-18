@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import BrowserAnimationsModule
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { CdkDrag, CdkDropList, CdkDropListGroup, DragDrop, DragDropModule } from
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { CustomFilterPipe } from './custom-filter-pipe.pipe';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
     ShoppingListComponent,
     CustomFilterPipe,
     RecipeDetailComponent,
+    CreateRecipeComponent,
     
     
   ],
@@ -43,6 +46,7 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     
   ],
   providers: [],

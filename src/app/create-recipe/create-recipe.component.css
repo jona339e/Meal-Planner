@@ -1,0 +1,140 @@
+/* Apply global styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Style the main container */
+.create-recipe-container {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Style the form container */
+.create-recipe-form {
+  width: 50vw;
+  padding: 20px;
+  border: 1px solid var(--color-secondary);
+  background-color: var(--color-secondary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  text-align: left;
+}
+
+/* Style form headings */
+.create-recipe-form h3 {
+  color: var(--color-text);
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+/* Style form groups */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+/* Style input fields */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #f6f6f6; /* Soft white color */
+  color: var(--color-text);
+  box-sizing: border-box;
+}
+
+/* Style ingredient and instruction containers */
+.ingredient-container,
+.instructions-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Style ingredient and instruction items */
+.ingredient,
+.instruction {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.instruction-extra-extra{
+  width: 100%;
+}
+
+.ingredient input,
+.instruction input {
+  flex: 1.5; /* Wider input fields for ingredients */
+  padding: 10px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 4px;
+  margin-right: 10px;
+  background-color: #f6f6f6; /* Soft white color */
+  color: var(--color-text);
+}
+
+/* Style the "+" and "-" buttons */
+.button-container button {
+  background-color: var(--color-text);
+  color: var(--color-secondary);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin: 0 5px;
+}
+
+.button-container button:hover {
+  background-color: var(--color-primary);
+}
+
+.button-container-form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.button-container-form button {
+  width: 48%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button-container-form button.btn-success {
+  background-color: var(--color-text);
+  color: var(--color-secondary);
+}
+
+.button-container-form button.btn-success:hover {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.button-container-form button.btn-danger {
+  background-color: var(--color-text);
+  color: var(--color-secondary);
+}
+
+.button-container-form button.btn-danger:hover {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}

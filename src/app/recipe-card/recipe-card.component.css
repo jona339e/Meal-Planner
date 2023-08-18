@@ -27,6 +27,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: grab;
   text-align: center; /* Center the content horizontally */
+  height: 100%;
+  user-select: none;
   
 }
 
@@ -48,3 +50,4 @@
 .recipe-card-drag-preview {
   width: 100%; /* Set the width to fill the cell */
 }
+
