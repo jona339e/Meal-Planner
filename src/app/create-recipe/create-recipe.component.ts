@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import required modules
-import { Recipe } from '../Interfaces';
-
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms'; // Import required modules
+import { Ingredient, Recipe } from '../Interfaces';
 
 @Component({
   selector: 'app-create-recipe',
@@ -9,50 +14,84 @@ import { Recipe } from '../Interfaces';
   styleUrls: ['./create-recipe.component.css'],
 })
 export class CreateRecipeComponent implements OnInit {
+  recipeModel: Recipe = {
+    id: 0,
+    title: '',
+    category: '',
+    description: '',
+    preparationTime: '',
+    cookingTime: '',
+    servings: 0,
+    rating: 0,
+    ingredients: [],
+    instructions: [],
+    deleted: false,
+  };
 
-  recipeForm: FormGroup = new FormGroup({}); // Create a FormGroup to hold the form's values
-
-
-  ngOnInit() {
-
-  }
-  
-  
-  onSubmit() {
-    const formData: Recipe = this.recipeForm.value;
-    console.log(JSON.stringify(formData, null, 2));
-}
-    
   categories: string[] = ['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Snacks'];
   selectedCategory: string = '';
 
-  ingredientAmount: number = 1;
-  instructionAmount: number = 1;
+  instructionArr: any[] = [];
+
+  ingredientArr: any[] = [];
+
+  ingredientInputValues: any[] = [[]];
+  instructionInputValue: string = '';
+
+  ingredientModel: Ingredient = {
+    name: '',
+    amount: {
+      value: 0,
+      unit: '',
+    },
+  };
+
+  onSubmit() {
 
 
-  incrementIngredientAmount() {
-    this.ingredientAmount++;
-    console.log(this.ingredientAmount);
+    this.recipeModel.ingredients = this.ingredientInputValues.map(row => {
+      const ingredient: Ingredient = {
+        name: row[0],
+        amount: {
+          value: row[1][0],
+          unit: row[1][1],
+        },
+      };
+      return ingredient;
+    });
+
+    this.recipeModel.instructions = this.instructionArr.map(row => {
+      return row[0];
+    });
+
+    console.log(this.recipeModel);
   }
-  decrementIngredientAmount() {
-    if (this.ingredientAmount > 1) {
-      this.ingredientAmount--;
+
+  ngOnInit() {
+    this.addIngredientRow();
+    this.addInstructionRow();
+  }
+
+
+
+  addIngredientRow() {
+    this.ingredientInputValues.push(['', [0, '']]);
+  }
+
+  deleteIngredientRow() {
+    if (this.ingredientArr.length > 1) {
+      this.ingredientArr.pop();
     }
   }
 
-  incrementInstructionAmount() {
-    this.instructionAmount++;
-    console.log(this.instructionAmount);
-  }
-  decrementInstructionAmount() {
-    if (this.instructionAmount > 1) {
-      this.instructionAmount--;
-    }
+  addInstructionRow() {
+    this.instructionArr.push(['']);
   }
 
-  
-  counter(length: number): number[] {
-    return new Array(length);
-}
+  deleteInstructionRow() {
+    if (this.instructionArr.length > 1) {
+      this.instructionArr.pop();
+    }
+  }
 
 }

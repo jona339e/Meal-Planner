@@ -44,3 +44,7 @@
 .recipe-card-drag-preview {
   width: 100%; /* Set the width to fill the cell */
 }
+
+.fa{
+  color: var(--color-text);
+}

@@ -1,15 +1,17 @@
 <div class="create-recipe-container">
-    <form class="create-recipe-form" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <form class="create-recipe-form" (ngSubmit)="onSubmit()" #recipeForm="ngForm">
+
+        
         <h3>Create a new Recipe</h3>
 
         <div class="form-group">
             <label>Title:</label>
-            <input required type="text" class="form-control" placeholder="Enter Recipe Title" id="Recipe-Title">
+            <input required type="text" class="form-control" placeholder="Enter Recipe Title" id="Recipe-Title" [(ngModel)]="recipeModel.title" name="title">
         </div>
 
         <div class="form-group">
             <label for="Recipe-Category">Category:</label>
-            <select class="form-control" id="Recipe-Category" formControlName="recipeCategory" required>
+            <select class="form-control" id="Recipe-Category" required [(ngModel)]="recipeModel.category" name="category">
                 <option value="" disabled>Select a category</option> <!-- Placeholder option -->
                 <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
             </select>
@@ -19,60 +21,61 @@
         <div class="form-group">
             <label>Description:</label>
             <textarea required class="form-control" rows="5" id="Recipe-Description"
-                placeholder="Enter Recipe Description"></textarea>
+                placeholder="Enter Recipe Description" name="description" [(ngModel)]="recipeModel.description" ></textarea>
         </div>
 
         <div class="form-group">
             <label>Preparation Time:</label>
             <input required type="number" placeholder="Time In Minutes" id="Recipe-Preparation-Time"
-                class="form-control">
+                class="form-control" [(ngModel)]="recipeModel.preparationTime" name="preparationTime">
         </div>
 
         <div class="form-group">
             <label>Cooking Time:</label>
-            <input required type="number" placeholder="Time In Minutes" id="Recipe-Cooking-Time" class="form-control">
+            <input required type="number" placeholder="Time In Minutes" 
+            id="Recipe-Cooking-Time" class="form-control" [(ngModel)]="recipeModel.cookingTime" name="cookingTime">
         </div>
 
         <div class="form-group">
             <label>Servings:</label>
-            <input required type="number" placeholder="Number of Servings" id="Recipe-Servings" class="form-control">
+            <input required type="number" placeholder="Number of Servings" 
+            id="Recipe-Servings" class="form-control" [(ngModel)]="recipeModel.servings" name="servings">
         </div>
 
         <div class="form-group">
             <label>Rating:</label>
-            <input required type="number" placeholder="Rating - 1 to 5" id="Recipe-Rating" class="form-control">
+            <input required type="number" placeholder="Rating - 1 to 5" 
+            id="Recipe-Rating" class="form-control" [(ngModel)]="recipeModel.rating" name="rating">
         </div>
 
         <div class="form-group">
-            <label>ingredients:</label>
+            <label>Ingredients:</label>
             <div class="ingredient-container">
-                <div class="ingredient-extra" *ngIf="ingredientAmount >= 1">
-                    <div class="ingredient" *ngFor="let i of counter(ingredientAmount); let index = index">
-                        <div class="ingredient">
-                            <input required type="text" placeholder="Ingredient Name" class="form-control Ingredient">
-                            <input required type="number" placeholder="Amount" class="form-control Amount">
-                            <input required type="text" placeholder="Unit of Measurement" class="form-control Unit">
-                        </div>
+                <div class="ingredient" *ngFor="let ingredientRow of ingredientArr; let i = index">
+                    <div class="ingredient">
+                        <input required type="text" placeholder="Ingredient Name" class="form-control Ingredient" [(ngModel)]="ingredientRow[0]" name="ingredientName">
+                        <input required type="number" placeholder="Amount" class="form-control Amount" [(ngModel)]="ingredientRow[1][0]" name="myValue">
+                        <input required type="text" placeholder="Unit of Measurement" class="form-control Unit" [(ngModel)]="ingredientRow[1][1]" name="unit">
                     </div>
                 </div>
-                <div class="button-container">
-                    <button class="delete-ingredient btn" (click)="decrementIngredientAmount()">-</button>
-                    <button class="add-ingredient btn" (click)="incrementIngredientAmount()">+</button>
-                </div>
+            </div>
+            <div class="button-container">
+                <button class="delete-ingredient btn" type="button" (click)="deleteIngredientRow()"><i class="fas fa-minus"></i></button>
+                <button class="add-ingredient btn" type="button" (click)="addIngredientRow()"><i class="fas fa-plus"></i></button>
             </div>
         </div>
 
         <div class="form-group">
             <label>Instructions:</label>
             <div class="instructions-container">
-                <div *ngFor="let index of counter(instructionAmount); let i = index" class="instruction">
+                <div *ngFor="let instruction of instructionArr; let i = index" class="instruction">
                     <div class="instruction-extra-extra">
-                        <input required type="text" placeholder="Instruction" class="form-control intruction-input">
+                        <input required type="text" placeholder="Instruction" class="form-control intruction-input" [(ngModel)]="recipeModel.instructions" name="instruction">
                     </div>
                 </div>
                 <div class="button-container">
-                    <button class="delete-instruction btn" (click)="decrementInstructionAmount()">-</button>
-                    <button class="add-instruction btn" (click)="incrementInstructionAmount()">+</button>
+                    <button class="delete-instruction btn" type="button" (click)="deleteInstructionRow()"><i class="fas fa-minus"></i></button>
+                    <button class="add-instruction btn" type="button" (click)="addInstructionRow()"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
         </div>
@@ -80,7 +83,7 @@
 
         <div class="button-container-form">
             <button class="btn btn-success" type="submit">Confirm</button>
-            <button class="btn btn-danger">Cancel</button>
+            <button class="btn btn-danger" type="reset">Cancel</button>
         </div>
 
 
