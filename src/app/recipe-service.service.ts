@@ -11,7 +11,7 @@ export class RecipeServiceService{
   constructor(private http: HttpClient) {}
 
 
-  url: string = 'assets/Recipes.json';
+  url: string = 'https://localhost:7268/api/Recipe';
 
 
   getRecipes(): Observable<Recipe[]> {

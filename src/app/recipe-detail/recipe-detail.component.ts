@@ -45,7 +45,9 @@ export class RecipeDetailComponent implements OnInit {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 >= 0.5 ? 1 : 0;
   
+
     return new Array(fullStars + halfStar);
+    
   }
   
 }

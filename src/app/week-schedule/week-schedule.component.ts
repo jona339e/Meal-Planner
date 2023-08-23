@@ -67,7 +67,7 @@ export class WeekScheduleComponent implements OnInit {
     if (deletedRecipe) {
       deletedRecipe.ingredients.forEach((ingredient) => {
         this.shoppingListUpdated.emit([
-          { ...ingredient, amount: { ...ingredient.amount, value: -ingredient.amount.value } },
+          { ...ingredient, amounts: { ...ingredient.amounts, value: -ingredient.amounts.value } },
         ]);
       });
 

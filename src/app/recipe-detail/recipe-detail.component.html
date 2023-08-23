@@ -10,7 +10,7 @@
       <div class="list">
         <h3>Ingredients:</h3>
         <ul>
-          <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.name}} {{ingredient.amount.value}} {{ingredient.amount.unit}}</li>
+          <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.name}} {{ ingredient.amounts.value }} {{ ingredient.amounts.unit }}</li>
         </ul>
       </div>
       <div class="list">
@@ -18,7 +18,7 @@
         <h6 class="time">Cooking Time: {{recipe.cookingTime}} - Preparation time: {{recipe.preparationTime}}</h6>
         <h6 class="servings">Servings: {{recipe.servings}}</h6>
         <ul>
-          <li *ngFor="let instruction of recipe.instructions">{{ instruction }}</li>
+          <li *ngFor="let instruction of recipe.instructions">{{ instruction.text }}</li>
         </ul>
       </div>
     </div>

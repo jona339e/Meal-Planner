@@ -8,17 +8,23 @@ export interface Recipe {
     servings: number;
     rating: number;
     ingredients: Ingredient[];
-    instructions: string[];
+    instructions: Instruction[];
     deleted: boolean;
   }
   
   export interface Ingredient {
     name: string;
-    amount: Amount;
+    amounts: Amounts;
   }
   
-  export type Amount = {
+  export interface Amounts {
     value: number;
     unit: string;
   };
+
+  export interface Instruction{
+    id: number;
+    text: string;
+    recipeId: number;
+  }
   

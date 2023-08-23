@@ -30,12 +30,12 @@ export class DashboardComponent {
 
       if (existingIngredientIndex !== -1) {
         // Subtract the ingredient amount from shopping list
-        this.shoppingListIngredients[existingIngredientIndex].amount.value += newIngredient.amount.value;
+        this.shoppingListIngredients[existingIngredientIndex].amounts.value += newIngredient.amounts.value;
       } else {
         // Create a new instance of the ingredient and add it to the list
         const shoppingListIngredient: Ingredient = {
           name: newIngredient.name,
-          amount: { ...newIngredient.amount, value: newIngredient.amount.value },
+          amounts: { ...newIngredient.amounts, value: newIngredient.amounts.value },
         };
         this.shoppingListIngredients.push(shoppingListIngredient);
       }
@@ -43,7 +43,7 @@ export class DashboardComponent {
 
     // Remove ingredients with 0 amount
     this.shoppingListIngredients = this.shoppingListIngredients.filter(
-      ingredient => ingredient.amount.value > 0
+      ingredient => ingredient.amounts.value > 0
     );
   }
 
