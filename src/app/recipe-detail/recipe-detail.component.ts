@@ -28,6 +28,9 @@ export class RecipeDetailComponent implements OnInit {
     this.getRecipes();
     const title = this.route.snapshot.paramMap.get('title');
     
+
+    // change this to fetch from id or title so only 1 recipe is fetched
+    
     // Wait for the recipes to be fetched from the service
     this.recipeService.getRecipes().subscribe(recipes => {
       this.recipes = recipes;

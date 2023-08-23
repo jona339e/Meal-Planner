@@ -20,6 +20,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { CustomFilterPipe } from './custom-filter-pipe.pipe';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
+import { FormsTestComponent } from './forms-test/forms-test.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
     CustomFilterPipe,
     RecipeDetailComponent,
     CreateRecipeComponent,
+    FormsTestComponent,
     
     
   ],

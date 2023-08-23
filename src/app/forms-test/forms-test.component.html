@@ -1,18 +1,18 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="recipe-form">
     <h2>Create Recipe</h2>
     <div class="form-section">
-      <label>Title: <input required formControlName="title" class="input-field" /></label>
+      <label>Title: <input formControlName="title" class="input-field" /></label>
       <label>Category:
         <select formControlName="category" class="input-field">
-          <option value="" disabled selected>Choose a category</option>
-          <option *ngFor="let cat of categories" [value]="cat" required>{{ cat }}</option>
+            <option value="" disabled selected>Choose a category</option>
+          <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
         </select>
       </label>
-      <label>Description: <input required formControlName="description" class="input-field" /></label>
-      <label>Preparation Time: <input required formControlName="prepTime" type="number" class="input-field" /></label>
-      <label>Cooking Time: <input required formControlName="cookTime" type="number" class="input-field" /></label>
-      <label>Servings: <input required formControlName="servings" type="number" class="input-field" /></label>
-      <label>Rating: <input required formControlName="rating" type="number" class="input-field" /></label>
+      <label>Description: <input formControlName="description" class="input-field" /></label>
+      <label>Preparation Time: <input formControlName="prepTime" type="number" class="input-field" /></label>
+      <label>Cooking Time: <input formControlName="cookTime" type="number" class="input-field" /></label>
+      <label>Servings: <input formControlName="servings" type="number" class="input-field" /></label>
+      <label>Rating: <input formControlName="rating" type="number" class="input-field" /></label>
     </div>
     
     <div formArrayName="ingredients" class="form-array-container">
@@ -23,9 +23,9 @@
         </div>
         <div *ngFor="let ingredient of ingredients.controls; let i = index" class="ingredient-row">
           <div [formGroupName]="i" class="ingredient-group">
-            <input required formControlName="name" class="ingredient-input" />
-            <input required formControlName="amount" type="number" class="ingredient-input" />
-            <input required formControlName="unit" class="ingredient-input" />
+            <input formControlName="name" class="ingredient-input" />
+            <input formControlName="amount" type="number" class="ingredient-input" />
+            <input formControlName="unit" class="ingredient-input" />
           </div>
         </div>
         <div class="buttons">
@@ -41,7 +41,7 @@
   </div>
   <div *ngFor="let instruction of instructions.controls; let i = index" class="instruction-row">
     <div [formGroupName]="i" class="instruction-group">
-      <input required formControlName="text" class="instruction-input" />
+      <input formControlName="text" class="instruction-input" />
     </div>
   </div>
   <div class="buttons">
