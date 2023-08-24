@@ -32,7 +32,8 @@ export class SearchComponent implements OnInit {
 
   goToRecipeDetail(recipe: Recipe) {
     // Navigate to RecipeDetailComponent with the recipe's title as parameter
-    this.router.navigate(['/recipe-detail', recipe.title]);
+    console.log("search recipeId: " + recipe.id);
+    this.router.navigate(['/recipe-detail', recipe.id]);
   }
 
   ngOnInit() {
