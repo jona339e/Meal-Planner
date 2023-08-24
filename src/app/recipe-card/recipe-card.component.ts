@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { Recipe } from '../Interfaces';
 import { RecipeServiceService } from '../recipe-service.service';
+import { StarService } from '../star.service';
+
 
 
 @Component({
@@ -16,7 +18,7 @@ export class RecipeCardComponent implements OnInit{
   recipes: Recipe[] = [];
 
   
-  constructor(private recipeService: RecipeServiceService) { }
+  constructor(private recipeService: RecipeServiceService, public starService: StarService) { }
   ngOnInit(): void {
     this.getRecipes();
   }
@@ -29,11 +31,22 @@ getRecipes(): void {
 }
 
 
-getRatingStars(rating: number): number[] {
-  const fullStars = Math.floor(rating);
-  const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+getRatingStars(rating: number): (boolean | string)[] {
+  if (rating === null || isNaN(rating)) {
+    return [];
+  }
 
-  return new Array(fullStars + halfStar);
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 >= 0.5;
+
+  const starsArray = new Array(fullStars).fill(true);
+  if (halfStar) {
+    starsArray.push('half');
+  }
+
+  return starsArray;
 }
+
+
 
 }

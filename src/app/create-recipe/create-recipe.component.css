@@ -141,3 +141,10 @@ margin-left: 10px;
 }
 
 
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  /* Add other styling properties for your loading spinner */
+}

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeServiceService } from '../recipe-service.service';
 import { Recipe } from '../Interfaces';
+import { StarService } from '../star.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -15,7 +16,7 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe | null = null;
 
   // Inject ActivatedRoute and RecipeServiceService
-  constructor(private route: ActivatedRoute, private recipeService: RecipeServiceService) {}
+  constructor(private route: ActivatedRoute, private recipeService: RecipeServiceService, public starService: StarService) {}
 
 
   ngOnInit(): void {
@@ -40,23 +41,5 @@ export class RecipeDetailComponent implements OnInit {
         }   
     });
   }
-
-  // This method returns an array of numbers
-  // The length of the array is the number of stars to display
-  // For example, if rating is 3.5, the array will be [1,1,1,0]
-  // and will render 3 full stars and 1 half star
-  getFullStars(rating: number): number[] {
-    return new Array(Math.floor(rating));
-  }
-  
-  hasHalfStar(rating: number): boolean {
-    return rating % 1 >= 0.5;
-  }
-  
-  
-  
-  
-  
-  
   
 }

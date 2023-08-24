@@ -2,19 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { CreateRecipe } from './Interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreateRecipeService {
 
-  private url = 'https://mock-api-url.com'; // Replace with your mock API URL
+  private url = 'https://localhost:7268/api/Recipe';
 
   constructor(private http: HttpClient) {}
 
-  createRecipe(recipeData: any): Observable<any> {
-    // You can replace 'any' with a custom interface that matches your recipe structure
-    const url = `${this.url}/recipes`; // Replace 'recipes' with your API endpoint
+  createRecipe(recipeData: CreateRecipe): Observable<any> {
+    const url = `${this.url}`; 
 
     // Send a POST request to the API
     return this.http.post(url, recipeData).pipe(

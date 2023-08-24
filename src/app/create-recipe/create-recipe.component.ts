@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl, ReactiveFormsModule  } from '@angular/forms';
 import { CreateRecipeService } from '../create-recipe.service';
-import { Recipe } from '../Interfaces';
+import { Recipe, CreateRecipe } from '../Interfaces';
 
 @Component({
   selector: 'app-create-recipe',
@@ -11,18 +11,19 @@ import { Recipe } from '../Interfaces';
 export class CreateRecipeComponent {
   form: FormGroup;
   categories: string[] = ['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Snacks'];
+  loading: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private createRecipeService: CreateRecipeService 
     ) {
     this.form = this.formBuilder.group({
-      title: '',
-      category: '',
-      description: '',
-      prepTime: '',
-      cookTime: '',
-      servings: '',
-      rating: '',
+      title: 'test',
+      category: 'test',
+      description: 'test',
+      prepTime: '123',
+      cookTime: '123',
+      servings: '123',
+      rating: '1.5',
       ingredients: this.formBuilder.array([]),
       instructions: this.formBuilder.array([])
     });
@@ -40,7 +41,7 @@ export class CreateRecipeComponent {
   }
 
   removeIngredients() {
-    if (this.ingredients.length > 0) {
+    if (this.ingredients.length > 1) {
       this.ingredients.removeAt(this.ingredients.length - 1);
     }
   }
@@ -48,7 +49,7 @@ export class CreateRecipeComponent {
   createIngredientFormGroup() {
     return new FormGroup({
       name: new FormControl(''),
-      amount: new FormControl(''),
+      amounts: new FormControl(''),
       unit: new FormControl('')
     });
   }
@@ -62,7 +63,7 @@ export class CreateRecipeComponent {
   }
 
   removeLastInstruction() {
-    if (this.instructions.length > 0) {
+    if (this.instructions.length > 1) {
       this.instructions.removeAt(this.instructions.length - 1);
     }
   }
@@ -74,10 +75,10 @@ export class CreateRecipeComponent {
   }
 
   onSubmit() {
-    console.log(this.form.value)
     if (this.form.valid) {
-      const formattedRecipe: Recipe = {
-        id: 0,
+      this.loading = true;
+
+      const formattedRecipe: CreateRecipe = {
         title: this.form.get('title')?.value,
         category: this.form.get('category')?.value ,
         description: this.form.get('description')?.value ,
@@ -85,19 +86,46 @@ export class CreateRecipeComponent {
         cookingTime: this.form.get('cookTime')?.value,
         servings: this.form.get('servings')?.value,
         rating: this.form.get('rating')?.value,
-        ingredients: this.ingredients.controls.map(control => control.value),
-        instructions: this.instructions.controls.map(control => control.get('text')?.value),
+        ingredients: this.ingredients.controls.map(control => ({
+          name: control.get('name')?.value,
+          amounts: {
+            value: control.get('amounts')?.value,
+            unit: control.get('unit')?.value
+          }
+        })),
+        instructions: this.instructions.controls.map(control => ({
+          text: control.get('text')?.value
+        })),
         deleted: false
       };
+
       this.createRecipeService.createRecipe(formattedRecipe).subscribe({
         next: response => {
           console.log('Recipe created successfully', response);
           this.form.reset();
         },
-        error: error => console.error('There was an error!', error)
-      });
+        error: error => console.error('There was an error!', error),
+        complete: () => {
+          this.loading = false
+          this.onReset();
+          }
+        });
     } else {
       console.log('Form is invalid');
     }
-  }  
+
+  }
+  
+  onReset(){
+    for (let i = this.ingredients.length; i >= 1; i--) {
+      this.removeIngredients();
+    }
+
+    for (let i = this.instructions.length; i >= 1; i--) {
+      this.removeLastInstruction();
+    }
+
+  }
+
+
 }

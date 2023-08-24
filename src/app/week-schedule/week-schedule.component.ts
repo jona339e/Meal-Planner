@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Recipe, Ingredient } from '../Interfaces';
 import { WeekScheduleService } from '../week-schedule.service';
+import { StarService } from '../star.service';
 
 @Component({
   selector: 'app-week-schedule',
@@ -21,7 +22,7 @@ export class WeekScheduleComponent implements OnInit {
     Array(this.days.length).fill(null)
   );
 
-  constructor(private weekScheduleService: WeekScheduleService) {}
+  constructor(private weekScheduleService: WeekScheduleService, public starService: StarService) {}
 
   ngOnInit(): void {
     this.loadCellContents();

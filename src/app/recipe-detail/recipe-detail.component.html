@@ -2,10 +2,10 @@
     <div *ngIf="recipe" class="recipe-card">
       <h2>{{ recipe.title }}</h2>
       <div class="rating">
-        <ng-container *ngFor="let _ of getFullStars(recipe.rating); let i = index">
-          <i class="fas fa-star"></i>
+        <ng-container *ngFor="let star of starService.getRatingStars(recipe.rating)">
+          <i class="fas fa-star" *ngIf="star === true"></i>
+          <i class="fas fa-star-half-alt" *ngIf="star === 'half'"></i>
         </ng-container>
-        <i class="fas fa-star-half-alt" *ngIf="hasHalfStar(recipe.rating)"></i>
       </div>
       
       <div class="description">

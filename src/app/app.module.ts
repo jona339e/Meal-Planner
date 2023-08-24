@@ -21,6 +21,7 @@ import { CustomFilterPipe } from './custom-filter-pipe.pipe';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 import { FormsTestComponent } from './forms-test/forms-test.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { FormsTestComponent } from './forms-test/forms-test.component';
     RecipeDetailComponent,
     CreateRecipeComponent,
     FormsTestComponent,
+    LoadingSpinnerComponent,
     
     
   ],
