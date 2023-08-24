@@ -55,3 +55,38 @@
 .empty-message {
   text-align: center;
 }
+
+/* Styling for action buttons */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-update,
+.btn-delete {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-update {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-delete {
+  background-color: var(--color-primary);
+  color: white;
+  margin-left: 10px;
+}
+
+.btn-update:hover,
+.btn-delete:hover {
+  background-color: var(--color-text);
+}
+
+/* ... Other existing CSS ... */

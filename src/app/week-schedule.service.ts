@@ -20,3 +20,13 @@ export class WeekScheduleService {
     return this.http.put(this.dataUrl, updatedData);
   }
 }
+
+/* 
+Idea
+
+Create a table with mon-sun as columns and the recipeID as rows.
+
+then fetch the data from the database and fill the table with the recipeID's
+
+
+*/

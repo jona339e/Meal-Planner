@@ -1,0 +1,42 @@
+<div class="form-container" *ngIf="recipe">
+    <h2>Update Recipe</h2>
+  
+    <form [formGroup]="updateForm" (ngSubmit)="updateRecipe()" class="recipe-form">
+      <div class="form-section">
+        <label>Title: <input required formControlName="title" class="input-field" /></label>
+        <label>
+          Category:
+          <select formControlName="category" class="input-field">
+            <option value="" disabled selected>Choose a category</option>
+            <option *ngFor="let cat of categories" [value]="cat" required>{{ cat }}</option>
+          </select>
+        </label>
+        <label>Description: <input required formControlName="description" class="input-field" /></label>
+        <label>Preparation Time: <input required formControlName="preparationTime" type="number" class="input-field" /></label>
+        <label>Cooking Time: <input required formControlName="cookingTime" type="number" class="input-field" /></label>
+        <label>Servings: <input required formControlName="servings" type="number" class="input-field" /></label>
+        <label>Rating: <input required formControlName="rating" type="number" class="input-field" /></label>
+      </div>
+  
+      <!-- Ingredients Section -->
+      <div formArrayName="ingredients" class="form-section">
+        <div *ngFor="let ingredientCtrl of getIngredientControls(); let i = index" [formGroupName]="i" class="ingredient-item">
+          <label>Ingredient Name: <input formControlName="name" class="input-field" required /></label>
+          <label>Amount: <input formControlName="amounts.value" type="number" class="input-field" required /></label>
+          <label>Unit: <input formControlName="amounts.unit" class="input-field" required /></label>
+        </div>
+        <button type="button" (click)="addIngredient()">Add Ingredient</button>
+      </div>
+  
+      <!-- Instructions Section -->
+      <div formArrayName="instructions" class="form-section">
+        <!-- Instructions rendering, similar to ingredients -->
+      </div>
+  
+      <!-- Other form fields (deleted, etc.) -->
+  
+      <!-- Submit Button -->
+      <button type="submit">Update Recipe</button>
+    </form>
+  </div>
+  

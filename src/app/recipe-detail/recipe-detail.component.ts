@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { RecipeServiceService } from '../recipe-service.service';
 import { Recipe } from '../Interfaces';
 import { StarService } from '../star.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-recipe-detail',
@@ -16,7 +18,7 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe | null = null;
 
   // Inject ActivatedRoute and RecipeServiceService
-  constructor(private route: ActivatedRoute, private recipeService: RecipeServiceService, public starService: StarService) {}
+  constructor(private route: ActivatedRoute, private recipeService: RecipeServiceService, public starService: StarService, private router: Router) {}
 
 
   ngOnInit(): void {
@@ -41,5 +43,28 @@ export class RecipeDetailComponent implements OnInit {
         }   
     });
   }
+
+  updateRecipe() {
+    if (this.recipe) {
+      // Implement logic to open a modal or navigate to an update form
+      // Pass this.recipe.id to the form to identify the recipe to update
+      console.log(this.recipe.id);
+      this.router.navigate(['/update', this.recipe.id]);
+    }
+  }
+
+  deleteRecipe() {
+    if (this.recipe) {
+      if (confirm('Are you sure you want to delete this recipe?')) {
+        this.recipeService.deleteRecipe(this.recipe.id).subscribe(() => {
+          // Handle successful deletion (e.g., navigate back to the recipe list)
+          this.router.navigate(['/search']);
+        });
+      }
+    }
+  }
+
+
+
   
 }
