@@ -170,14 +170,16 @@ export class UpdateRecipeComponent implements OnInit{
         instructions: instructions,
         deleted: formData.deleted
       };
+      console.log(updatedRecipe);
 
-      this.recipeService.updateRecipe(updatedRecipe, this.recipeId!).subscribe(recipe => {
-        this.recipe = recipe;
+
+      this.recipeService.updateRecipe(updatedRecipe, this.recipeId!).subscribe(() => {
         console.log('recipe updated');
+        
         // navigate back to search component
         this.router.navigate(['/search']);
-      }
-      );
+      });
+      
       
 
 
