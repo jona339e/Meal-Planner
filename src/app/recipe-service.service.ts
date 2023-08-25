@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Recipe } from './Interfaces';
+import { CreateRecipe, Recipe } from './Interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,11 @@ export class RecipeServiceService{
 
     return this.http.delete(`${this.url}/${recipeId}`);
   }
+
+  updateRecipe(recipe: CreateRecipe, recipeId: number): Observable<any> {
+    return this.http.put(`${this.url}/${recipeId}`, recipe);
+  }
+
   
   
 
