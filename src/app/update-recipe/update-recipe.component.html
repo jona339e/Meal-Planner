@@ -11,7 +11,7 @@
             <option *ngFor="let cat of categories" [value]="cat" required>{{ cat }}</option>
           </select>
         </label>
-        <label>Description: <input required formControlName="description" class="input-field" /></label>
+        <label>Description: <input required formControlName="description" class="input-field" type="text"/></label>
         <label>Preparation Time: <input required formControlName="preparationTime" type="number" class="input-field" /></label>
         <label>Cooking Time: <input required formControlName="cookingTime" type="number" class="input-field" /></label>
         <label>Servings: <input required formControlName="servings" type="number" class="input-field" /></label>
@@ -30,9 +30,9 @@
           <div *ngIf="recipe?.ingredients">
             <div formArrayName="ingredients">
               <div *ngFor="let ingredientGroup of ingredients.controls; let i = index" [formGroupName]="i" class="ingredient-inputs">
-                <input formControlName="name" placeholder="Ingredient Name" class="input-field">
-                <input formControlName="value" placeholder="Amount Value" class="input-field">
-                <input formControlName="unit" placeholder="Amount Unit" class="input-field">
+                <input formControlName="name" placeholder="Ingredient Name" class="input-field" required>
+                <input formControlName="value" placeholder="Amount Value" class="input-field" required type="number">
+                <input formControlName="unit" placeholder="Amount Unit" class="input-field" required>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
         <div *ngIf="recipe?.instructions">
           <div formArrayName="instructions">
             <div *ngFor="let instructionControl of instructions.controls; let i = index" [formGroupName]="i" >
-              <input formControlName="text" placeholder="Instruction {{ i + 1 }}" class="input-field">
+              <input formControlName="text" placeholder="Instruction {{ i + 1 }}" class="input-field" required>
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@
       </div>
   
       <div class="btn-group btn-submit-group">
-        <button type="reset">Cancel</button>
+        <button type="reset" (click)="goBack()">Cancel</button>
         <button type="submit">Update</button>
       </div>
   

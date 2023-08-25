@@ -186,5 +186,8 @@ export class UpdateRecipeComponent implements OnInit{
     }
   }
 
+  goBack(){
+    this.router.navigate(['/recipe-detail/' + this.recipeId]);
+  }
 
 }
