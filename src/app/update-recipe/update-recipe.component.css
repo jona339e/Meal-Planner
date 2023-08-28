@@ -96,3 +96,8 @@
     max-width: 600px;
   }
   
+  .input-field.ng-invalid {
+    border: 1px solid red;
+  }
+
+  

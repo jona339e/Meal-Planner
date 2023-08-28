@@ -148,3 +148,8 @@ margin-left: 10px;
   height: 100px;
   /* Add other styling properties for your loading spinner */
 }
+
+
+.input-field.ng-invalid {
+  border: 1px solid red;
+}

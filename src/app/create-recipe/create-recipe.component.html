@@ -9,13 +9,14 @@
         </select>
       </label>
       <label>Description: <input required formControlName="description" class="input-field" /></label>
-      <label>Preparation Time: <input required formControlName="prepTime" type="number" class="input-field" /></label>
-      <label>Cooking Time: <input required formControlName="cookTime" type="number" class="input-field" /></label>
-      <label>Servings: <input required formControlName="servings" type="number" class="input-field" /></label>
-      <label>Rating: <input required formControlName="rating" type="number" class="input-field" /></label>
+      <label>Preparation Time: <input required formControlName="prepTime" type="number" class="input-field" min="0" (input)="aboveZero($event.target!, 'prepTime')"/></label>
+      <label>Cooking Time: <input required formControlName="cookTime" type="number" class="input-field" min="0" (input)="aboveZero($event.target!, 'cookTime')"/></label>
+      <label>Servings: <input required formControlName="servings" type="number" class="input-field" min="0" (input)="aboveZero($event.target!, 'servings')"/></label>
+      <label>Rating: <input required formControlName="rating" type="number" class="input-field" min="0" max="5" (input)="validateRating()"/></label>
     </div>
     
     <div formArrayName="ingredients" class="form-array-container">
+      <h4>Ingredients</h4>
         <div class="ingredient-labels">
           <label class="ingredient-label">Name:</label>
           <label class="ingredient-label">Amount:</label>
@@ -24,7 +25,7 @@
         <div *ngFor="let ingredient of ingredients.controls; let i = index" class="ingredient-row">
           <div [formGroupName]="i" class="ingredient-group">
             <input required formControlName="name" class="ingredient-input" />
-            <input required formControlName="amounts" type="number" class="ingredient-input" />
+            <input required formControlName="amounts" type="number" class="ingredient-input" min="0" (input)="aboveZeroIngredient()"/>
             <input required formControlName="unit" class="ingredient-input" />
           </div>
         </div>
@@ -41,7 +42,7 @@
   </div>
   <div *ngFor="let instruction of instructions.controls; let i = index" class="instruction-row">
     <div [formGroupName]="i" class="instruction-group">
-      <input required formControlName="text" class="instruction-input" />
+      <input required formControlName="text" class="instruction-input"/>
     </div>
   </div>
   <div class="buttons">

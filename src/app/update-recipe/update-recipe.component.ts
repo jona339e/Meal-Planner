@@ -36,6 +36,7 @@ export class UpdateRecipeComponent implements OnInit{
     ) 
     { 
       this.updateForm = this.formBuilder.group({
+        rating: [0],
         instructions: this.formBuilder.array([]),
         ingredients: this.formBuilder.array([])
       });
@@ -183,6 +184,18 @@ export class UpdateRecipeComponent implements OnInit{
       
 
 
+    }
+  }
+
+  
+  // controls what the user can input for rating
+  validateRating() {
+    const ratingControl = this.updateForm.get('rating');
+
+    if (ratingControl!.value < 0) {
+      ratingControl!.setValue(0);
+    } else if (ratingControl!.value > 5) {
+      ratingControl!.setValue(5);
     }
   }
 

@@ -127,5 +127,29 @@ export class CreateRecipeComponent {
 
   }
 
+  validateRating() {
+    const ratingControl = this.form.get('rating');
+
+    if (ratingControl!.value < 0) {
+      ratingControl!.setValue(0);
+    } else if (ratingControl!.value > 5) {
+      ratingControl!.setValue(5);
+    }
+  }
+
+  aboveZero(inputElement: EventTarget, controlName: string){
+    const value = parseFloat((inputElement as HTMLInputElement).value);
+    if (value < 0) {
+      this.form.get(controlName)?.setValue(0);
+    }
+  }
+
+
+  aboveZeroIngredient(){
+    const value = parseFloat(this.ingredients.controls[0].get('amounts')?.value);
+
+    if (value < 0) this.ingredients.controls[0].get('amounts')?.setValue(0);
+
+  }
 
 }

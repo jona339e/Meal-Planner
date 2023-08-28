@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpHeaderResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CreateRecipe, Recipe } from './Interfaces';
 
@@ -8,14 +8,20 @@ import { CreateRecipe, Recipe } from './Interfaces';
 })
 export class RecipeServiceService{
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+
+  }
 
 
   url: string = 'https://localhost:7268/api/Recipe';
 
 
+
   getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.url);
+    
+    const headers = new HttpHeaders().set('content-type', 'application/json')
+
+    return this.http.get<Recipe[]>(this.url, { headers });
   }
 
   getRecipeById(id: number): Observable<Recipe> {
